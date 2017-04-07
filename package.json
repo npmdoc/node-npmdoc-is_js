@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"is_js",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "is_js",
+    "description": "api documentation for [is_js (v0.9.0)](http://is.js.org/) [![npm package](https://img.shields.io/npm/v/npmdoc-is_js.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-is_js) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-is_js.svg)](https://travis-ci.org/npmdoc/node-npmdoc-is_js)",
     "devDependencies": {
-        "is_js": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "is_js": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-is_js",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-is_js",
+    "keywords": [
+        "documentation",
+        "is_js"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_is_js.js",
+    "name": "npmdoc-is_js",
+    "nameAlias": "npmdoc_is_js",
+    "nameOriginal": "npmdoc-is_js",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-is_js"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
